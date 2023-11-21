@@ -135,18 +135,18 @@ Get:13 https://mirror.aardsoft.fi/opensuse/repositories/devel:/kubic:/libcontain
 Get:14 https://mirror.aardsoft.fi/opensuse/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  slirp4netns 100:1.1.8-4 [708 kB]</BR>
 Get:15 https://mirror.aardsoft.fi/opensuse/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  containernetworking-plugins 100:1.1.1~1 [7,009 kB]</BR>
 Fetched 31.0 MB in 1min 27s (358 kB/s)  </BR>
-Selecting previously unselected package catatonit.</BR>
-(Reading database ... 179273 files and directories currently installed.)</BR>
-Preparing to unpack .../00-catatonit_0.1.7-1_amd64.deb ...</BR>
-Unpacking catatonit (0.1.7-1) ...</BR>
-Selecting previously unselected package conmon.</BR>
-Preparing to unpack .../01-conmon_100%3a2.1.2~0_amd64.deb ...</BR>
-Unpacking conmon (100:2.1.2~0) ...</BR>
-Selecting previously unselected package containers-common.</BR>
-Preparing to unpack .../02-containers-common_100%3a1-22_all.deb ...</BR>
-Unpacking containers-common (100:1-22) ...</BR>
-Selecting previously unselected package libnet1:amd64.</BR>
-Preparing to unpack .../03-libnet1_1.1.6+dfsg-3.1build1_amd64.deb ... </BR>
+Selecting previously unselected package catatonit.  </BR>
+(Reading database ... 179273 files and directories currently installed.)  </BR>
+Preparing to unpack .../00-catatonit_0.1.7-1_amd64.deb ...  </BR>
+Unpacking catatonit (0.1.7-1) ...  </BR>
+Selecting previously unselected package conmon.  </BR>
+Preparing to unpack .../01-conmon_100%3a2.1.2~0_amd64.deb ... </BR>
+Unpacking conmon (100:2.1.2~0) ... </BR>
+Selecting previously unselected package containers-common.  </BR>
+Preparing to unpack .../02-containers-common_100%3a1-22_all.deb ... </BR>
+Unpacking containers-common (100:1-22) ... </BR>
+Selecting previously unselected package libnet1:amd64. </BR>
+Preparing to unpack .../03-libnet1_1.1.6+dfsg-3.1build1_amd64.deb ...  </BR>
 Unpacking libnet1:amd64 (1.1.6+dfsg-3.1build1) ... </BR>
 Selecting previously unselected package libnftables1:amd64. </BR>
 Preparing to unpack .../04-libnftables1_0.9.3-2_amd64.deb ... </BR>
@@ -194,10 +194,10 @@ Setting up containers-common (100:1-22) ...</BR>
 Setting up podman-plugins (100:1.2.0-1) ...</BR>
 Setting up criu (3.18-1) ...</BR>
 Setting up fuse-overlayfs (100:1.5.0-2) ...</BR>
-Setting up crun (100:1.2-2) ...</BR>
-Setting up podman (100:3.4.2-5) ...</BR>
-Processing triggers for libc-bin (2.31-0ubuntu9.12) ...</BR>
-Processing triggers for man-db (2.9.1-1) ..</BR>
+Setting up crun (100:1.2-2) ...  </BR>
+Setting up podman (100:3.4.2-5) ...  </BR>
+Processing triggers for libc-bin (2.31-0ubuntu9.12) ... </BR>
+Processing triggers for man-db (2.9.1-1) .. </BR>
 
 
 After installation of podman you can check by this command.
