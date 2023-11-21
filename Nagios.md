@@ -59,6 +59,7 @@ sudo apt install -y podman
 **-y:** This is an option flag that stands for "yes." It's used to automatically answer "yes" to any prompts that may come up during the installation process.</br>        
 
 **podman:** This is the name of the software package you want to install.
+
 Here i am showing output of above process.
 
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ source /etc/os-release
@@ -272,7 +273,7 @@ Unpacking uidmap (1:4.8.1-1ubuntu5.20.04.4) ...
 Selecting previously unselected package containernetworking-plugins.
 
 Preparing to unpack .../14-containernetworking-plugins_100%3a1.1.1~1_amd64.deb .
-..
+
 Unpacking containernetworking-plugins (100:1.1.1~1) ...
 
 Setting up libnftables1:amd64 (0.9.3-2) ...
@@ -326,15 +327,25 @@ systemctl status podman
 **status:**	This is a subcommand of systemctl that displays the status of a system service.
 
 **podman:**	Name of the system service to check the status.
+
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman -v
+
 podman version 3.4.2
+
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ systemctl enable podman
+
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ systemctl status podman
+
 ● podman.service - Podman API Service
+
      Loaded: loaded (/lib/systemd/system/podman.service; enabled; vendor preset>
+     
      Active: inactive (dead) since Tue 2023-11-21 10:32:51 IST; 2h 7min ago
+     
 TriggeredBy: ● podman.socket
+
        Docs: man:podman-system-service(1)
+       
    Main PID: 553 (code=exited, status=0/SUCCESS)
 
 
