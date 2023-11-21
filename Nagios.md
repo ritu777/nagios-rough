@@ -350,6 +350,7 @@ TriggeredBy: ● podman.socket
 
 
 #### Command :-
+
 This command will query the default container registry (usually Docker Hub) and return a list of container images with "nagios" in their name or description.
 ```
 podman search nagios
@@ -380,7 +381,47 @@ This comand is used to pull the nagios container image from docker hub to your l
 ```
 podman pull docker.io/jasonrivers/nagios  
 ```
-![Alt text](<Screenshot from 2023-09-04 20-07-24-fotor-2023090962043.png>)
+**OUTPUT**
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman pull docker.io/jasonrivers/nagios  </BR>
+Trying to pull docker.io/jasonrivers/nagios:latest...  </BR>
+Getting image source signatures  </BR>
+Copying blob dd7e062adfb6 done    </BR>
+Copying blob 96bbd32b29b3 done   </BR> 
+Copying blob d4c51997579f done    </BR>
+Copying blob 445a6a12be2b done    </BR>
+Copying blob daa3f750d056 done   </BR> 
+Copying blob 878b4a43c295 done    </BR>
+Copying blob 11fc6d8237c3 done    </BR>
+Copying blob 089411da0537 done    </BR>
+Copying blob bd86ca31b8a8 done    </BR>
+Copying blob 31c4a802e45d done    </BR>
+Copying blob 93cc0b7e81b5 done    </BR>
+Copying blob bcb25e3d4ecc done    </BR>
+Copying blob ad88ae97aa25 done    </BR>
+Copying blob eb4585ea40c4 done    </BR>
+Copying blob 264243640435 done    </BR>
+Copying blob 1c5fe141759a done    </BR>
+Copying blob f7a3db6e1eaa done    </BR>
+Copying blob daeb7d0c5e99 done    </BR>
+Copying blob 829603bdc128 done    </BR>
+Copying blob 4f4fb700ef54 done    </BR>
+Copying blob c36e80ef7644 done    </BR>
+Copying blob e3f5c45501d6 done    </BR>
+Copying blob 75bd2226ab8b done    </BR>
+Copying blob 016b57298b2a done    </BR>
+Copying blob a9429a8d8646 done    </BR>
+Copying blob 0c811eb3e0b6 done    </BR>
+Copying blob 6bcfbfa7fcba done    </BR>
+Copying blob ba0a76ab9a00 done    </BR>
+Copying blob f3373598d9c6 done    </BR>
+Copying blob e26407a5e66d done    </BR>
+Copying blob 9ce3bcb33e2b done    </BR>
+Copying config 653834b48d done    </BR>
+Writing manifest to image destination </BR>
+Storing signatures </BR>
+653834b48d9f6c9b0b500cc3d45eabe988dae4f9bcb2e980d57f630760b53bd8
+
+
 
 **podman pull:** It tells your computer to download something.</br>
 
@@ -397,7 +438,10 @@ In this command I added my username and password also otherwise nagios will give
 ```
  podman run -d --name nagios -p 8095:80 --cap-add=NET_RAW -e NAGIOSADMIN_USER=reetu -e NAGIOSADMIN_PASSWORD=nagios docker.io/jasonrivers/nagios
  ```
-![Alt text](run-fotor-2023090963145-fotor-2023090911117.png)
+**OUTPUT**
+
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$  podman run -d --name nagios -p 8095:80 --cap-add=NET_RAW -e NAGIOSADMIN_USER=reetu -e NAGIOSADMIN_PASSWORD=nagios docker.io/jasonrivers/nagios</BR>
+cff139cc3e129ec4d7518c8a2578275ac9c313eb76b6d66866bf3501d8ef4b1c
 
 **podman run:** It tells your computer to start running something in a container.</br>
 
@@ -420,7 +464,13 @@ In this command I added my username and password also otherwise nagios will give
  ```
 podman ps
 ```
-![Alt text](<podman ps-fotor-20230909105549.png>)
+**OUTPUT**
+
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman ps</br>
+CONTAINER ID  IMAGE                                COMMAND               CREATED        STATUS            PORTS                 NAMES </br>
+cff139cc3e12  docker.io/jasonrivers/nagios:latest  /usr/local/bin/st...  2 minutes ago  Up 2 minutes ago  0.0.0.0:8095->80/tcp  nagios
+
+
 **podman:** This is the command-line tool for managing containers.</br>
 
 **ps:** This is a subcommand of podman that stands for "processes" or "list containers."</br>
