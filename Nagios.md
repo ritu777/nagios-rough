@@ -354,6 +354,14 @@ This command will query the default container registry (usually Docker Hub) and 
 ```
 podman search nagios
 ```
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman search nagios
+
+INDEX       NAME                                         DESCRIPTION                                      STARS       OFFICIAL    AUTOMATED
+docker.io   docker.io/newrelic/k8s-nri-nagios            New Relic Infrastructure Nagios Integration      1                       
+docker.io   docker.io/nagiosenterprises/nagioscore       Latest Nagios Core and Nagios Plugins on a C...  11                      
+docker.io   docker.io/jasonrivers/nagios                 Nagios Core with Nagiosgraph, check_nrpe, cu...  288                     [OK]
+docker.io   docker.io/harisekhon/nagios-plugins          Advanced Nagios Plugins Collection (400+ pro...  24                      [OK]
+docker.io   docker.io/ethnchao/nagios                    Nagios on Docker!                                6                       [OK]
 
 
 **podman:** It is the name of the containerization tool.</br>
