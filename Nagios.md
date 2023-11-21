@@ -59,12 +59,265 @@ sudo apt install -y podman
 **-y:** This is an option flag that stands for "yes." It's used to automatically answer "yes" to any prompts that may come up during the installation process.</br>        
 
 **podman:** This is the name of the software package you want to install.
-Here i am attaching the screenshots of above process.
-![Alt text](SOURCE.png)
-![Alt text](../../PODMAN.png)
-![Alt text](../../STATUS.png)
+Here i am showing output of above process.
+
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ source /etc/os-release
+
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+
+[sudo] password for ritu: 
+
+deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/ /
+
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo snap install curl
+
+curl 8.1.2 from Wouter van Bommel (woutervb) installed
+
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+  
+                                 Dload  Upload   Total   Spent    Left  Speed
+                                 
+100  1093  100  1093    0     0    940      0  0:00:01  0:00:01 --:--:--   940
+
+OK
+
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo apt update
+
+Hit:1 http://security.ubuntu.com/ubuntu focal-security InRelease  
+
+Hit:2 http://in.archive.ubuntu.com/ubuntu focal InRelease     
+
+Get:3 https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  InRelease [1,642 B]
+
+Get:4 http://in.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+
+Hit:5 http://in.archive.ubuntu.com/ubuntu focal-backports InRelease
+
+Get:6 http://in.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2,980 kB]
+
+Get:7 http://in.archive.ubuntu.com/ubuntu focal-updates/main i386 Packages [912 kB]
+
+Get:8 http://in.archive.ubuntu.com/ubuntu focal-updates/main Translation-en [484 kB]
+
+Get:9 http://in.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [2,511 kB]
+
+Get:10 http://in.archive.ubuntu.com/ubuntu focal-updates/restricted Translation-en [351 kB]
+
+Get:11 http://in.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1,133 kB]
+
+Get:12 http://in.archive.ubuntu.com/ubuntu focal-updates/universe i386 Packages [756 kB]
+
+Get:13 http://in.archive.ubuntu.com/ubuntu focal-updates/universe Translation-en [270 kB]
+
+Fetched 9,512 kB in 7s (1,334 kB/s)     
+
+Reading package lists... Done
+
+Building dependency tree   
+
+Reading state information... Done
+
+3 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo apt install -y podman
+
+Reading package lists... Done
+
+Building dependency tree  
+
+Reading state information... Done
+
+The following additional packages will be installed:
+
+  catatonit conmon containernetworking-plugins containers-common criu crun
+  
+  fuse-overlayfs libnet1 libnftables1 libprotobuf-c1 podman-machine-cni
+  
+  podman-plugins slirp4netns uidmap
+  
+The following NEW packages will be installed:
+
+  catatonit conmon containernetworking-plugins containers-common criu crun
+  
+  fuse-overlayfs libnet1 libnftables1 libprotobuf-c1 podman podman-machine-cni
+  
+  podman-plugins slirp4netns uidmap
+  
+0 upgraded, 15 newly installed, 0 to remove and 3 not upgraded.
+
+Need to get 31.0 MB of archives.
+
+After this operation, 153 MB of additional disk space will be used.
+
+Get:1 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libnet1 amd64 1.1.6+dfsg-3.1build1 [43.3 kB]
+
+Get:3 http://in.archive.ubuntu.com/ubuntu focal/universe amd64 libnftables1 amd64 0.9.3-2 [229 kB]
+
+Get:4 https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  conmon 100:2.1.2~0 [33.7 kB]
+
+Get:5 https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  containers-common 100:1-22 [52.4 kB]
+
+Get:7 http://in.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libprotobuf-c1 amd64 1.3.3-1ubuntu0.1 [19.3 kB]
+
+Get:8 http://in.archive.ubuntu.com/ubuntu focal-updates/universe amd64 uidmap amd64 1:4.8.1-1ubuntu5.20.04.4 [26.4 kB]
+
+Get:10 https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  fuse-overlayfs 100:1.5.0-2 [41.8 kB]
+
+Get:2 https://mirror.aardsoft.fi/opensuse/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  catatonit 0.1.7-1 [275 kB]
+
+Get:6 https://mirror.aardsoft.fi/opensuse/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  criu 3.18-1 [703 kB]
+
+Get:9 https://mirror.aardsoft.fi/opensuse/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  crun 100:1.2-2 [252 kB]
+
+Get:11 https://mirror.aardsoft.fi/opensuse/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  podman-plugins 100:1.2.0-1 [1,116 kB]
+
+Get:12 https://mirror.aardsoft.fi/opensuse/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  podman-machine-cni 100:0.0.0-1 [1,821 kB]
+
+Get:13 https://mirror.aardsoft.fi/opensuse/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  podman 100:3.4.2-5 [18.7 MB]
+
+Get:14 https://mirror.aardsoft.fi/opensuse/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  slirp4netns 100:1.1.8-4 [708 kB]
+
+Get:15 https://mirror.aardsoft.fi/opensuse/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  containernetworking-plugins 100:1.1.1~1 [7,009 kB]
+
+Fetched 31.0 MB in 1min 27s (358 kB/s)  
+
+Selecting previously unselected package catatonit.
+
+(Reading database ... 179273 files and directories currently installed.)
+
+Preparing to unpack .../00-catatonit_0.1.7-1_amd64.deb ...
+
+Unpacking catatonit (0.1.7-1) ...
+
+Selecting previously unselected package conmon.
+
+Preparing to unpack .../01-conmon_100%3a2.1.2~0_amd64.deb ...
+
+Unpacking conmon (100:2.1.2~0) ...
+
+Selecting previously unselected package containers-common.
+
+Preparing to unpack .../02-containers-common_100%3a1-22_all.deb ...
+
+Unpacking containers-common (100:1-22) ...
+
+Selecting previously unselected package libnet1:amd64.
+
+Preparing to unpack .../03-libnet1_1.1.6+dfsg-3.1build1_amd64.deb ...
+
+Unpacking libnet1:amd64 (1.1.6+dfsg-3.1build1) ...
+
+Selecting previously unselected package libnftables1:amd64.
+
+Preparing to unpack .../04-libnftables1_0.9.3-2_amd64.deb ...
+
+Unpacking libnftables1:amd64 (0.9.3-2) ...
+
+Selecting previously unselected package libprotobuf-c1:amd64.
+
+Preparing to unpack .../05-libprotobuf-c1_1.3.3-1ubuntu0.1_amd64.deb ...
+
+Unpacking libprotobuf-c1:amd64 (1.3.3-1ubuntu0.1) ...
+
+Selecting previously unselected package criu.
+
+Preparing to unpack .../06-criu_3.18-1_amd64.deb ...
+
+Unpacking criu (3.18-1) ...
+
+Selecting previously unselected package crun.
+
+Preparing to unpack .../07-crun_100%3a1.2-2_amd64.deb ...
+
+Unpacking crun (100:1.2-2) ...
+
+Selecting previously unselected package fuse-overlayfs.
+
+Preparing to unpack .../08-fuse-overlayfs_100%3a1.5.0-2_amd64.deb ...
+
+Unpacking fuse-overlayfs (100:1.5.0-2) ...
+
+Selecting previously unselected package podman-plugins.
+
+Preparing to unpack .../09-podman-plugins_100%3a1.2.0-1_amd64.deb ...
+
+Unpacking podman-plugins (100:1.2.0-1) ...
+
+Selecting previously unselected package podman-machine-cni.
+
+Preparing to unpack .../10-podman-machine-cni_100%3a0.0.0-1_amd64.deb ...
+
+Unpacking podman-machine-cni (100:0.0.0-1) ...
+
+Selecting previously unselected package podman.
+
+Preparing to unpack .../11-podman_100%3a3.4.2-5_amd64.deb ...
+
+Unpacking podman (100:3.4.2-5) ...
+
+Selecting previously unselected package slirp4netns.
+
+Preparing to unpack .../12-slirp4netns_100%3a1.1.8-4_amd64.deb ...
+
+Unpacking slirp4netns (100:1.1.8-4) ...
+
+Selecting previously unselected package uidmap.
+
+Preparing to unpack .../13-uidmap_1%3a4.8.1-1ubuntu5.20.04.4_amd64.deb ...
+
+Unpacking uidmap (1:4.8.1-1ubuntu5.20.04.4) ...
+
+Selecting previously unselected package containernetworking-plugins.
+
+Preparing to unpack .../14-containernetworking-plugins_100%3a1.1.1~1_amd64.deb .
+..
+Unpacking containernetworking-plugins (100:1.1.1~1) ...
+
+Setting up libnftables1:amd64 (0.9.3-2) ...
+
+Setting up slirp4netns (100:1.1.8-4) ...
+
+Setting up uidmap (1:4.8.1-1ubuntu5.20.04.4) ...
+
+Setting up libnet1:amd64 (1.1.6+dfsg-3.1build1) ...
+
+Setting up libprotobuf-c1:amd64 (1.3.3-1ubuntu0.1) ...
+
+Setting up podman-machine-cni (100:0.0.0-1) ...
+
+Setting up conmon (100:2.1.2~0) ...
+
+Setting up containernetworking-plugins (100:1.1.1~1) ...
+
+Setting up catatonit (0.1.7-1) ...
+
+Setting up containers-common (100:1-22) ...
+
+Setting up podman-plugins (100:1.2.0-1) ...
+
+Setting up criu (3.18-1) ...
+
+Setting up fuse-overlayfs (100:1.5.0-2) ...
+
+Setting up crun (100:1.2-2) ...
+
+Setting up podman (100:3.4.2-5) ...
+
+Processing triggers for libc-bin (2.31-0ubuntu9.12) ...
+
+Processing triggers for man-db (2.9.1-1) ..
+
 
 After installation of podman you can check by this command.
+```
+podman -v
+```
+```
+systemctl enable podman
+```
+
 ```
 systemctl status podman
 ```
@@ -73,13 +326,24 @@ systemctl status podman
 **status:**	This is a subcommand of systemctl that displays the status of a system service.
 
 **podman:**	Name of the system service to check the status.
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman -v
+podman version 3.4.2
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ systemctl enable podman
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ systemctl status podman
+● podman.service - Podman API Service
+     Loaded: loaded (/lib/systemd/system/podman.service; enabled; vendor preset>
+     Active: inactive (dead) since Tue 2023-11-21 10:32:51 IST; 2h 7min ago
+TriggeredBy: ● podman.socket
+       Docs: man:podman-system-service(1)
+   Main PID: 553 (code=exited, status=0/SUCCESS)
+
 
 #### Command :-
 This command will query the default container registry (usually Docker Hub) and return a list of container images with "nagios" in their name or description.
 ```
 podman search nagios
 ```
-![Alt text](image-fotor-20230909690.png)
+
 
 **podman:** It is the name of the containerization tool.</br>
 
