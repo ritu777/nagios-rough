@@ -29,6 +29,10 @@ First, use the source /etc/os-release command to get the OS release, as shown be
 ```
 source /etc/os-release
 ```
+**OUTPUT**
+```ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ source /etc/os-release
+```
+
 Since podman is not in the default Ubuntu 20.04 repository, we need to add the Kubic repository to be able to download the podman package. Then it can be installed using one of the package managers in Ubuntu, such as apt or apt-get. To add the repository, use the below command.
 ```
 echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
