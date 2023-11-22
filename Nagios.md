@@ -24,9 +24,9 @@ Nagios is set up to monitor and track the health, performance, and availability 
 - Podman version 3.4.2 (This is optional otherwise,you can apply on base as well. )
   
 <u><h3 >Firstly, install podman by following these commands: </h3></u>
-### COMMAND 
 
 First, use the source /etc/os-release command to get the OS release, as shown below</br>
+### COMMAND 
 ```
 source /etc/os-release
 ```
@@ -35,12 +35,13 @@ source /etc/os-release
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ source /etc/os-release
 ```
-### COMMAND 
 
 Since podman is not in the default Ubuntu 20.04 repository, we need to add the Kubic repository to be able to download the podman package. Then it can be installed using one of the package managers in Ubuntu, such as apt or apt-get. To add the repository, use the below command.
+### COMMAND 
 ```
 echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 ```
+
 **OUTPUT**
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
@@ -49,9 +50,10 @@ ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ echo "deb https://download.opensuse.org/r
 
 deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/ /
 ```
-### COMMAND 
+
 
 If curl command is already installed then no need to install again.
+### COMMAND 
 ```
 sudo snap install curl
 ```
@@ -60,15 +62,17 @@ sudo snap install curl
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo snap install curl
 
 curl 8.1.2 from Wouter van Bommel (woutervb) installed
-```
-### COMMAND 
 
 Then, use the command below to download and add the GPG key. This is needed to make sure the downloaded package is good.
+### COMMAND 
 ```
 curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
 ```
+
 **OUTPUT**
-```ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
+
+```
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
   
@@ -106,10 +110,8 @@ Reading state information... Done</BR>
 3 packages can be upgraded. Run 'apt list --upgradable' to see them.</BR>
 ```
 
-### COMMAND 
-
 Now you can install podman by following command.
-
+### COMMAND 
 ```
 sudo apt install -y podman
 ```
