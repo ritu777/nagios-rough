@@ -332,7 +332,7 @@ In this command I added my username and password also otherwise nagios will give
 ```
  podman run -d --name nagios -p 8095:80 --cap-add=NET_RAW -e NAGIOSADMIN_USER=reetu -e NAGIOSADMIN_PASSWORD=nagios docker.io/jasonrivers/nagios
  ```
-**OUTPUT**
+**Output**
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$  podman run -d --name nagios -p 8095:80 --cap-add=NET_RAW -e NAGIOSADMIN_USER=reetu -e NAGIOSADMIN_PASSWORD=nagios docker.io/jasonrivers/nagios</BR>
 cff139cc3e129ec4d7518c8a2578275ac9c313eb76b6d66866bf3501d8ef4b1c
