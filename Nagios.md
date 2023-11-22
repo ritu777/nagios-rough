@@ -24,6 +24,7 @@ Nagios is set up to monitor and track the health, performance, and availability 
 - Podman version 3.4.2 (This is optional otherwise,you can apply on base as well. )
   
 <u><h3 >Firstly, install podman by following these commands: </h3></u>
+###COMMAND 
 
 First, use the source /etc/os-release command to get the OS release, as shown below</br>
 ```
@@ -34,6 +35,7 @@ source /etc/os-release
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ source /etc/os-release
 ```
+###COMMAND 
 
 Since podman is not in the default Ubuntu 20.04 repository, we need to add the Kubic repository to be able to download the podman package. Then it can be installed using one of the package managers in Ubuntu, such as apt or apt-get. To add the repository, use the below command.
 ```
@@ -47,6 +49,7 @@ ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ echo "deb https://download.opensuse.org/r
 
 deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/ /
 ```
+###COMMAND 
 
 If curl command is already installed then no need to install again.
 ```
@@ -58,36 +61,14 @@ ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo snap install curl
 
 curl 8.1.2 from Wouter van Bommel (woutervb) installed
 ```
-
+###COMMAND 
 
 Then, use the command below to download and add the GPG key. This is needed to make sure the downloaded package is good.
 ```
 curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
 ```
-After that update your system by this command.
-```
-sudo apt update
-```
-Now you can install podman by following command.
-
-```
-sudo apt install -y podman
-```
-**apt:** apt stands for "Advanced Package Tool. It is used to install, update, and manage software packages on ubuntu operating system.</br>
-
-**install:** This is the sub-command that tells apt to install a package. When you use apt install, you're instructing the package manager to download and install the specified software.</br>
-
-**-y:** This is an option flag that stands for "yes." It's used to automatically answer "yes" to any prompts that may come up during the installation process.</br>        
-
-**podman:** This is the name of the software package you want to install.
-
-Here i am showing output of above process.
-
-ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo snap install curl
-
-curl 8.1.2 from Wouter van Bommel (woutervb) installed
-
-ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
+**OUTPUT**
+```ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
   
@@ -96,8 +77,15 @@ ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ curl -L "https://download.opensuse.org/re
 100  1093  100  1093    0     0    940      0  0:00:01  0:00:01 --:--:--   940
 
 OK
+```
+###COMMAND 
 
-ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo apt update  </BR>
+After that update your system by this command.
+```
+sudo apt update
+```
+**OUTPUT**
+```ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo apt update  </BR>
 Hit:1 http://security.ubuntu.com/ubuntu focal-security InRelease   </BR>
 Hit:2 http://in.archive.ubuntu.com/ubuntu focal InRelease   </BR>   
 Get:3 https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  InRelease [1,642 B] </BR>
@@ -116,7 +104,17 @@ Reading package lists... Done</BR>
 Building dependency tree</BR>   
 Reading state information... Done</BR>
 3 packages can be upgraded. Run 'apt list --upgradable' to see them.</BR>
+```
 
+###COMMAND 
+
+Now you can install podman by following command.
+
+```
+sudo apt install -y podman
+```
+**OUTPUT**
+```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo apt install -y podman</BR>
 Reading package lists... Done</BR>
 Building dependency tree  </BR>
@@ -211,6 +209,18 @@ Setting up crun (100:1.2-2) ...  </BR>
 Setting up podman (100:3.4.2-5) ...  </BR>
 Processing triggers for libc-bin (2.31-0ubuntu9.12) ... </BR>
 Processing triggers for man-db (2.9.1-1) .. </BR>
+```
+
+
+**apt:** apt stands for "Advanced Package Tool. It is used to install, update, and manage software packages on ubuntu operating system.</br>
+
+**install:** This is the sub-command that tells apt to install a package. When you use apt install, you're instructing the package manager to download and install the specified software.</br>
+
+**-y:** This is an option flag that stands for "yes." It's used to automatically answer "yes" to any prompts that may come up during the installation process.</br>        
+
+**podman:** This is the name of the software package you want to install.
+
+
 
 
 After installation of podman you can check by this command.
