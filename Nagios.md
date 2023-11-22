@@ -26,18 +26,18 @@ Nagios is set up to monitor and track the health, performance, and availability 
 <u><h3 >Firstly, install podman by following these commands: </h3></u>
 
 First, use the source /etc/os-release command to get the OS release, as shown below</br>
-### COMMAND 
+### Command
 ```
 source /etc/os-release
 ```
-**OUTPUT**
+**Output**
 
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ source /etc/os-release
 ```
 
 Since podman is not in the default Ubuntu 20.04 repository, we need to add the Kubic repository to be able to download the podman package. Then it can be installed using one of the package managers in Ubuntu, such as apt or apt-get. To add the repository, use the below command.
-### COMMAND 
+### Command
 ```
 echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 ```
@@ -53,11 +53,11 @@ deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stab
 
 
 If curl command is already installed then no need to install again.
-### COMMAND 
+### Command 
 ```
 sudo snap install curl
 ```
-**OUTPUT**
+**Output**
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo snap install curl
 
@@ -65,13 +65,13 @@ curl 8.1.2 from Wouter van Bommel (woutervb) installed
 ```
 
 Then, use the command below to download and add the GPG key. This is needed to make sure the downloaded package is good.
-### COMMAND 
+### Command
 
 ```
 curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
 ```
 
-**OUTPUT**
+**Output**
 
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
@@ -85,12 +85,12 @@ ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ curl -L "https://download.opensuse.org/re
 OK
 ```
 After that update your system by this command.
-### COMMAND 
+### Command
 
 ```
 sudo apt update
 ```
-**OUTPUT**
+**Output**
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo apt update  </BR>
 Hit:1 http://security.ubuntu.com/ubuntu focal-security InRelease   </BR>
@@ -114,11 +114,11 @@ Reading state information... Done</BR>
 ```
 
 Now you can install podman by following command.
-### COMMAND 
+### Command
 ```
 sudo apt install -y podman
 ```
-**OUTPUT**
+**Output**
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo apt install -y podman</BR>
 Reading package lists... Done</BR>
@@ -229,22 +229,22 @@ Processing triggers for man-db (2.9.1-1) .. </BR>
 
 
  you can check version of podman by this command.
-### COMMAND 
+### Command
 ```
 podman -v
 ```
-**OUTPUT**
+**Output**
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman -v
 podman version 3.4.2
 ```
 After installation of podman search registry of nagios on docker hub.
 This command will query the default container registry (usually Docker Hub) and return a list of container images with "nagios" in their name or description.
-### COMMAND 
+### Command
 ```
 podman search nagios
 ```
-**OUTPUT**
+**Output**
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman search nagios
 
@@ -273,7 +273,7 @@ This comand is used to pull the nagios container image from docker hub to your l
 ```
 podman pull docker.io/jasonrivers/nagios  
 ```
-**OUTPUT**
+**Output**
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman pull docker.io/jasonrivers/nagios  </BR>
 Trying to pull docker.io/jasonrivers/nagios:latest...  </BR>
@@ -354,12 +354,12 @@ cff139cc3e129ec4d7518c8a2578275ac9c313eb76b6d66866bf3501d8ef4b1c
 
 **docker.io/jasonrivers/nagios:** This is the name of the container image you want to run. It's like specifying which application or tool you want to use in the container.</br>
 
-#### Command  :-
+### Command  :-
  Check running container details by this command.
  ```
 podman ps
 ```
-**OUTPUT**
+**Output**
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman ps</br>
 CONTAINER ID         cff139cc3e12     </br> 
@@ -382,7 +382,11 @@ This command is used for going into the container and execute commands.
 ```
 podman exec -it nagios bash
 ```
-![Alt text](<Screenshot from 2023-09-09 11-03-36-fotor-202309091163.png>)
+**Output**
+```
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman exec -it nagios bash
+root@d830848b87d7:/# 
+```
 
 **podman exec:** Exec is the sub command of podman used for executing a command inside a running container.</br>
 
@@ -392,35 +396,315 @@ podman exec -it nagios bash
 
 **bash:** This is the command you want to run inside the container. In this case, you are starting a Bash shell inside the container. Bash is a command-line shell that allows you to interact with the container's file system and execute commands within it.
 
-#### Command :-
-By this command, I am telling my computer to change my current working directory to the /opt/nagios/etc directory.
 
+- By this command, I am telling my computer to change my current working directory to the /opt/nagios/etc directory.
+### Command
 ```
 cd /opt/nagios/etc
 ```
+**Output**
+```
+root@d830848b87d7:/# cd /opt/nagios/etc
+root@d830848b87d7:/opt/nagios/etc# 
+```
+
 **cd:** This is a command that stands for "change directory." It is used to navigate or move to a different directory (folder) in the file system.
 
 **/opt/nagios/etc:** This is the path or location you want to change your current directory to. In this case, you are specifying the directory /opt/nagios/etc as the target directory.
 
-![Alt text](<Screenshot from 2023-09-09 11-08-52-fotor-20230909111153.png>)
 
-#### Command :-
- It is used to list files and directories in a directory. It is one of the most commonly used commands in the command-line interface (CLI). 
+
+
+-  It is used to list files and directories in a directory. It is one of the most commonly used commands in the command-line interface (CLI).
+  ### Command 
 ```
 ls
 ```
-![Alt text](<Screenshot from 2023-09-09 11-13-39-fotor-20230909113319.png>)
-#### Command :- 
-This command is used inside the container to use all commands.
+**Output**
+```
+root@d830848b87d7:/opt/nagios/etc# ls
+cgi.cfg  conf.d  htpasswd.users  monitor  nagios.cfg  nsca.cfg  objects  resource.cfg  send_nsca.cfg
+```
+
+- This command is used inside the container to use all commands.
+  ### Command 
 ```
 apt-get update && apt-get upgrade
 ```
-Then install vim command by using:
+***Output**
+```
+root@d830848b87d7:/opt/nagios/etc# apt-get update && apt-get upgrade
+Get:1 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]                         
+Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
+Get:3 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [1456 kB]             
+Get:4 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [1240 kB]                   
+Get:5 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [44.0 kB]             
+Get:6 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1013 kB]               
+Get:7 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]                                
+Get:8 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [109 kB]                              
+Get:9 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]                        
+Get:10 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]                       
+Get:11 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]                            
+Get:12 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]                        
+Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [1487 kB]              
+Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1282 kB]                
+Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [49.8 kB]              
+Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [1514 kB]                    
+Get:17 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [78.3 kB]                  
+Get:18 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [32.6 kB]              
+Fetched 28.5 MB in 1min 5s (441 kB/s)                                                                  
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+The following packages will be upgraded:
+  apt bind9-dnsutils bind9-host bind9-libs curl dnsutils libapparmor1 libapt-pkg6.0 libavahi-client3
+  libavahi-common-data libavahi-common3 libc-bin libc-dev-bin libc-devtools libc6 libc6-dev
+  libcurl3-gnutls libcurl4 libgnutls30 libgssapi-krb5-2 libk5crypto3 libkrb5-3 libkrb5support0
+  libmysqlclient-dev libmysqlclient21 libprocps8 libsmbclient libssl-dev libssl3 libsystemd0
+  libtiff-dev libtiff5 libtiffxx5 libudev1 libvpx-dev libvpx7 libwbclient0 libx11-6 libx11-data
+  libx11-dev libxpm-dev libxpm4 linux-libc-dev openssl procps python3-pip python3-samba samba-common
+  samba-common-bin samba-dsdb-modules samba-libs smbclient
+52 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 39.9 MB of archives.
+After this operation, 5183 kB disk space will be freed.
+Do you want to continue? [Y/n] y
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc-devtools amd64 2.35-0ubuntu3.4 [28.9 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc6-dev amd64 2.35-0ubuntu3.4 [2100 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc-dev-bin amd64 2.35-0ubuntu3.4 [20.3 kB]
+Get:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 linux-libc-dev amd64 5.15.0-89.99 [1338 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc6 amd64 2.35-0ubuntu3.4 [3234 kB]
+Get:6 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc-bin amd64 2.35-0ubuntu3.4 [706 kB]
+Get:7 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libsystemd0 amd64 249.11-0ubuntu3.11 [318 kB]
+Get:8 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libudev1 amd64 249.11-0ubuntu3.11 [78.0 kB]
+Get:9 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libapt-pkg6.0 amd64 2.4.11 [912 kB]    
+Get:10 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgnutls30 amd64 3.7.3-4ubuntu1.3 [968 kB]
+Get:11 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 apt amd64 2.4.11 [1363 kB]            
+Get:12 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libk5crypto3 amd64 1.19.2-2ubuntu0.3 [86.3 kB]
+Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libkrb5support0 amd64 1.19.2-2ubuntu0.3 [32.2 kB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libkrb5-3 amd64 1.19.2-2ubuntu0.3 [356 kB]
+Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgssapi-krb5-2 amd64 1.19.2-2ubuntu0.3 [144 kB]
+Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libssl-dev amd64 3.0.2-0ubuntu1.12 [2373 kB]
+Get:17 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libssl3 amd64 3.0.2-0ubuntu1.12 [1901 kB]
+Get:18 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3-samba amd64 2:4.15.13+dfsg-0ubuntu1.5 [3115 kB]
+Get:19 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 samba-common-bin amd64 2:4.15.13+dfsg-0ubuntu1.5 [620 kB]
+Get:20 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 smbclient amd64 2:4.15.13+dfsg-0ubuntu1.5 [473 kB]
+Get:21 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 samba-common all 2:4.15.13+dfsg-0ubuntu1.5 [75.8 kB]
+Get:22 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 samba-dsdb-modules amd64 2:4.15.13+dfsg-0ubuntu1.5 [313 kB]
+Get:23 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libavahi-client3 amd64 0.8-5ubuntu5.2 [28.0 kB]
+Get:24 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libavahi-common3 amd64 0.8-5ubuntu5.2 [23.9 kB]
+Get:25 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libavahi-common-data amd64 0.8-5ubuntu5.2 [23.8 kB]
+Get:26 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libsmbclient amd64 2:4.15.13+dfsg-0ubuntu1.5 [65.9 kB]
+Get:27 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libwbclient0 amd64 2:4.15.13+dfsg-0ubuntu1.5 [267 kB]
+Get:28 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 samba-libs amd64 2:4.15.13+dfsg-0ubuntu1.5 [6274 kB]
+Get:29 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libprocps8 amd64 2:3.3.17-6ubuntu2.1 [36.2 kB]
+Get:30 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 procps amd64 2:3.3.17-6ubuntu2.1 [378 kB]
+Get:31 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libapparmor1 amd64 3.0.4-2ubuntu2.3 [39.3 kB]
+Get:32 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 openssl amd64 3.0.2-0ubuntu1.12 [1182 kB]
+Get:33 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 bind9-host amd64 1:9.18.18-0ubuntu0.22.04.1 [52.5 kB]
+Get:34 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 bind9-dnsutils amd64 1:9.18.18-0ubuntu0.22.04.1 [157 kB]
+Get:35 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 bind9-libs amd64 1:9.18.18-0ubuntu0.22.04.1 [1244 kB]
+Get:36 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx11-dev amd64 2:1.7.5-1ubuntu0.3 [744 kB]
+Get:37 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx11-data all 2:1.7.5-1ubuntu0.3 [120 kB]
+Get:38 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx11-6 amd64 2:1.7.5-1ubuntu0.3 [667 kB]
+Get:39 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 curl amd64 7.81.0-1ubuntu1.14 [194 kB]
+Get:40 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libcurl4 amd64 7.81.0-1ubuntu1.14 [290 kB]
+Get:41 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 dnsutils all 1:9.18.18-0ubuntu0.22.04.1 [3928 B]
+Get:42 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libcurl3-gnutls amd64 7.81.0-1ubuntu1.14 [284 kB]
+Get:43 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libmysqlclient-dev amd64 8.0.35-0ubuntu0.22.04.1 [1664 kB]
+Get:44 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libmysqlclient21 amd64 8.0.35-0ubuntu0.22.04.1 [1301 kB]
+Get:45 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libtiff-dev amd64 4.3.0-6ubuntu0.6 [314 kB]
+Get:46 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libtiff5 amd64 4.3.0-6ubuntu0.6 [183 kB]
+Get:47 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libtiffxx5 amd64 4.3.0-6ubuntu0.6 [5744 B]
+Get:48 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libvpx-dev amd64 1.11.0-2ubuntu2.2 [1251 kB]
+Get:49 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libvpx7 amd64 1.11.0-2ubuntu2.2 [1078 kB]
+Get:50 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libxpm-dev amd64 1:3.5.12-1ubuntu0.22.04.2 [90.7 kB]
+Get:51 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libxpm4 amd64 1:3.5.12-1ubuntu0.22.04.2 [36.7 kB]
+Get:52 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 python3-pip all 22.0.2+dfsg-1ubuntu0.4 [1305 kB]
+Fetched 39.9 MB in 37s (1074 kB/s)                                                                     
+debconf: delaying package configuration, since apt-utils is not installed
+(Reading database ... 27740 files and directories currently installed.)
+Preparing to unpack .../libc-devtools_2.35-0ubuntu3.4_amd64.deb ...
+Unpacking libc-devtools (2.35-0ubuntu3.4) over (2.35-0ubuntu3.3) ...
+Preparing to unpack .../libc6-dev_2.35-0ubuntu3.4_amd64.deb ...
+Unpacking libc6-dev:amd64 (2.35-0ubuntu3.4) over (2.35-0ubuntu3.3) ...
+Preparing to unpack .../libc-dev-bin_2.35-0ubuntu3.4_amd64.deb ...
+Unpacking libc-dev-bin (2.35-0ubuntu3.4) over (2.35-0ubuntu3.3) ...
+Preparing to unpack .../linux-libc-dev_5.15.0-89.99_amd64.deb ...
+Unpacking linux-libc-dev:amd64 (5.15.0-89.99) over (5.15.0-84.93) ...
+Preparing to unpack .../libc6_2.35-0ubuntu3.4_amd64.deb ...
+Unpacking libc6:amd64 (2.35-0ubuntu3.4) over (2.35-0ubuntu3.3) ...
+Setting up libc6:amd64 (2.35-0ubuntu3.4) ...
+(Reading database ... 27738 files and directories currently installed.)
+Preparing to unpack .../libc-bin_2.35-0ubuntu3.4_amd64.deb ...
+Unpacking libc-bin (2.35-0ubuntu3.4) over (2.35-0ubuntu3.1) ...
+Setting up libc-bin (2.35-0ubuntu3.4) ...
+(Reading database ... 27738 files and directories currently installed.)
+Preparing to unpack .../libsystemd0_249.11-0ubuntu3.11_amd64.deb ...
+Unpacking libsystemd0:amd64 (249.11-0ubuntu3.11) over (249.11-0ubuntu3.9) ...
+Setting up libsystemd0:amd64 (249.11-0ubuntu3.11) ...
+(Reading database ... 27738 files and directories currently installed.)
+Preparing to unpack .../libudev1_249.11-0ubuntu3.11_amd64.deb ...
+Unpacking libudev1:amd64 (249.11-0ubuntu3.11) over (249.11-0ubuntu3.9) ...
+Setting up libudev1:amd64 (249.11-0ubuntu3.11) ...
+(Reading database ... 27738 files and directories currently installed.)
+Preparing to unpack .../libapt-pkg6.0_2.4.11_amd64.deb ...
+Unpacking libapt-pkg6.0:amd64 (2.4.11) over (2.4.10) ...
+Setting up libapt-pkg6.0:amd64 (2.4.11) ...
+(Reading database ... 27738 files and directories currently installed.)
+Preparing to unpack .../libgnutls30_3.7.3-4ubuntu1.3_amd64.deb ...
+Unpacking libgnutls30:amd64 (3.7.3-4ubuntu1.3) over (3.7.3-4ubuntu1.2) ...
+Setting up libgnutls30:amd64 (3.7.3-4ubuntu1.3) ...
+(Reading database ... 27738 files and directories currently installed.)
+Preparing to unpack .../archives/apt_2.4.11_amd64.deb ...
+Unpacking apt (2.4.11) over (2.4.10) ...
+Setting up apt (2.4.11) ...
+(Reading database ... 27736 files and directories currently installed.)
+Preparing to unpack .../libk5crypto3_1.19.2-2ubuntu0.3_amd64.deb ...
+Unpacking libk5crypto3:amd64 (1.19.2-2ubuntu0.3) over (1.19.2-2ubuntu0.2) ...
+Setting up libk5crypto3:amd64 (1.19.2-2ubuntu0.3) ...
+(Reading database ... 27736 files and directories currently installed.)
+Preparing to unpack .../libkrb5support0_1.19.2-2ubuntu0.3_amd64.deb ...
+Unpacking libkrb5support0:amd64 (1.19.2-2ubuntu0.3) over (1.19.2-2ubuntu0.2) ...
+Setting up libkrb5support0:amd64 (1.19.2-2ubuntu0.3) ...
+(Reading database ... 27736 files and directories currently installed.)
+Preparing to unpack .../libkrb5-3_1.19.2-2ubuntu0.3_amd64.deb ...
+Unpacking libkrb5-3:amd64 (1.19.2-2ubuntu0.3) over (1.19.2-2ubuntu0.2) ...
+Setting up libkrb5-3:amd64 (1.19.2-2ubuntu0.3) ...
+(Reading database ... 27736 files and directories currently installed.)
+Preparing to unpack .../libgssapi-krb5-2_1.19.2-2ubuntu0.3_amd64.deb ...
+Unpacking libgssapi-krb5-2:amd64 (1.19.2-2ubuntu0.3) over (1.19.2-2ubuntu0.2) ...
+Setting up libgssapi-krb5-2:amd64 (1.19.2-2ubuntu0.3) ...
+(Reading database ... 27736 files and directories currently installed.)
+Preparing to unpack .../libssl-dev_3.0.2-0ubuntu1.12_amd64.deb ...
+Unpacking libssl-dev:amd64 (3.0.2-0ubuntu1.12) over (3.0.2-0ubuntu1.10) ...
+Preparing to unpack .../libssl3_3.0.2-0ubuntu1.12_amd64.deb ...
+(Reading database ... 27738 files and directories currently installed.)
+Preparing to unpack .../libapt-pkg6.0_2.4.11_amd64.deb ...
+Unpacking libapt-pkg6.0:amd64 (2.4.11) over (2.4.10) ...
+Setting up libapt-pkg6.0:amd64 (2.4.11) ...
+(Reading database ... 27738 files and directories currently installed.)
+Preparing to unpack .../libgnutls30_3.7.3-4ubuntu1.3_amd64.deb ...
+Unpacking libgnutls30:amd64 (3.7.3-4ubuntu1.3) over (3.7.3-4ubuntu1.2) ...
+Setting up libgnutls30:amd64 (3.7.3-4ubuntu1.3) ...
+(Reading database ... 27738 files and directories currently installed.)
+Preparing to unpack .../archives/apt_2.4.11_amd64.deb ...
+Unpacking apt (2.4.11) over (2.4.10) ...
+Setting up apt (2.4.11) ...
+(Reading database ... 27736 files and directories currently installed.)
+Preparing to unpack .../libk5crypto3_1.19.2-2ubuntu0.3_amd64.deb ...
+Unpacking libk5crypto3:amd64 (1.19.2-2ubuntu0.3) over (1.19.2-2ubuntu0.2) ...
+Setting up libk5crypto3:amd64 (1.19.2-2ubuntu0.3) ...
+(Reading database ... 27736 files and directories currently installed.)
+Preparing to unpack .../libkrb5support0_1.19.2-2ubuntu0.3_amd64.deb ...
+Unpacking libkrb5support0:amd64 (1.19.2-2ubuntu0.3) over (1.19.2-2ubuntu0.2) ...
+Setting up libkrb5support0:amd64 (1.19.2-2ubuntu0.3) ...
+(Reading database ... 27736 files and directories currently installed.)
+Preparing to unpack .../libkrb5-3_1.19.2-2ubuntu0.3_amd64.deb ...
+Unpacking libkrb5-3:amd64 (1.19.2-2ubuntu0.3) over (1.19.2-2ubuntu0.2) ...
+Setting up libkrb5-3:amd64 (1.19.2-2ubuntu0.3) ...
+(Reading database ... 27736 files and directories currently installed.)
+Preparing to unpack .../libgssapi-krb5-2_1.19.2-2ubuntu0.3_amd64.deb ...
+Unpacking libgssapi-krb5-2:amd64 (1.19.2-2ubuntu0.3) over (1.19.2-2ubuntu0.2) ...
+Setting up libgssapi-krb5-2:amd64 (1.19.2-2ubuntu0.3) ...
+(Reading database ... 27736 files and directories currently installed.)
+Preparing to unpack .../libssl-dev_3.0.2-0ubuntu1.12_amd64.deb ...
+Unpacking libssl-dev:amd64 (3.0.2-0ubuntu1.12) over (3.0.2-0ubuntu1.10) ...
+Preparing to unpack .../libssl3_3.0.2-0ubuntu1.12_amd64.deb ...
+Preparing to unpack .../12-procps_2%3a3.3.17-6ubuntu2.1_amd64.deb ...
+Unpacking procps (2:3.3.17-6ubuntu2.1) over (2:3.3.17-6ubuntu2) ...
+Preparing to unpack .../13-libapparmor1_3.0.4-2ubuntu2.3_amd64.deb ...
+Unpacking libapparmor1:amd64 (3.0.4-2ubuntu2.3) over (3.0.4-2ubuntu2.2) ...
+Preparing to unpack .../14-openssl_3.0.2-0ubuntu1.12_amd64.deb ...
+Unpacking openssl (3.0.2-0ubuntu1.12) over (3.0.2-0ubuntu1.10) ...
+Preparing to unpack .../15-bind9-host_1%3a9.18.18-0ubuntu0.22.04.1_amd64.deb ...
+Unpacking bind9-host (1:9.18.18-0ubuntu0.22.04.1) over (1:9.18.12-0ubuntu0.22.04.3) ...
+Preparing to unpack .../16-bind9-dnsutils_1%3a9.18.18-0ubuntu0.22.04.1_amd64.deb ...
+Unpacking bind9-dnsutils (1:9.18.18-0ubuntu0.22.04.1) over (1:9.18.12-0ubuntu0.22.04.3) ...
+Preparing to unpack .../17-bind9-libs_1%3a9.18.18-0ubuntu0.22.04.1_amd64.deb ...
+Unpacking bind9-libs:amd64 (1:9.18.18-0ubuntu0.22.04.1) over (1:9.18.12-0ubuntu0.22.04.3) ...
+Preparing to unpack .../18-libx11-dev_2%3a1.7.5-1ubuntu0.3_amd64.deb ...
+Unpacking libx11-dev:amd64 (2:1.7.5-1ubuntu0.3) over (2:1.7.5-1ubuntu0.2) ...
+Preparing to unpack .../19-libx11-data_2%3a1.7.5-1ubuntu0.3_all.deb ...
+Unpacking libx11-data (2:1.7.5-1ubuntu0.3) over (2:1.7.5-1ubuntu0.2) ...
+Preparing to unpack .../20-libx11-6_2%3a1.7.5-1ubuntu0.3_amd64.deb ...
+Unpacking libx11-6:amd64 (2:1.7.5-1ubuntu0.3) over (2:1.7.5-1ubuntu0.2) ...
+Preparing to unpack .../21-curl_7.81.0-1ubuntu1.14_amd64.deb ...
+Unpacking curl (7.81.0-1ubuntu1.14) over (7.81.0-1ubuntu1.13) ...
+Preparing to unpack .../22-libcurl4_7.81.0-1ubuntu1.14_amd64.deb ...
+Unpacking libcurl4:amd64 (7.81.0-1ubuntu1.14) over (7.81.0-1ubuntu1.13) ...
+Preparing to unpack .../23-dnsutils_1%3a9.18.18-0ubuntu0.22.04.1_all.deb ...
+Unpacking dnsutils (1:9.18.18-0ubuntu0.22.04.1) over (1:9.18.12-0ubuntu0.22.04.3) ...
+Preparing to unpack .../24-libcurl3-gnutls_7.81.0-1ubuntu1.14_amd64.deb ...
+Unpacking libcurl3-gnutls:amd64 (7.81.0-1ubuntu1.14) over (7.81.0-1ubuntu1.13) ...
+Preparing to unpack .../25-libmysqlclient-dev_8.0.35-0ubuntu0.22.04.1_amd64.deb ...
+Unpacking libmysqlclient-dev (8.0.35-0ubuntu0.22.04.1) over (8.0.34-0ubuntu0.22.04.1) ...
+Preparing to unpack .../26-libmysqlclient21_8.0.35-0ubuntu0.22.04.1_amd64.deb ...
+Unpacking libmysqlclient21:amd64 (8.0.35-0ubuntu0.22.04.1) over (8.0.34-0ubuntu0.22.04.1) ...
+Preparing to unpack .../27-libtiff-dev_4.3.0-6ubuntu0.6_amd64.deb ...
+Unpacking libtiff-dev:amd64 (4.3.0-6ubuntu0.6) over (4.3.0-6ubuntu0.5) ...
+Preparing to unpack .../28-libtiff5_4.3.0-6ubuntu0.6_amd64.deb ...
+Unpacking libtiff5:amd64 (4.3.0-6ubuntu0.6) over (4.3.0-6ubuntu0.5) ...
+Preparing to unpack .../29-libtiffxx5_4.3.0-6ubuntu0.6_amd64.deb ...
+Setting up libxpm4:amd64 (1:3.5.12-1ubuntu0.22.04.2) ...
+Setting up libavahi-common3:amd64 (0.8-5ubuntu5.2) ...
+Setting up libx11-dev:amd64 (2:1.7.5-1ubuntu0.3) ...
+Setting up libvpx-dev:amd64 (1.11.0-2ubuntu2.2) ...
+Setting up libxpm-dev:amd64 (1:3.5.12-1ubuntu0.22.04.2) ...
+Setting up procps (2:3.3.17-6ubuntu2.1) ...
+Setting up libc6-dev:amd64 (2.35-0ubuntu3.4) ...
+Setting up bind9-dnsutils (1:9.18.18-0ubuntu0.22.04.1) ...
+Setting up libavahi-client3:amd64 (0.8-5ubuntu5.2) ...
+Setting up samba-libs:amd64 (2:4.15.13+dfsg-0ubuntu1.5) ...
+Setting up dnsutils (1:9.18.18-0ubuntu0.22.04.1) ...
+Setting up libtiff-dev:amd64 (4.3.0-6ubuntu0.6) ...
+Setting up libsmbclient:amd64 (2:4.15.13+dfsg-0ubuntu1.5) ...
+Setting up smbclient (2:4.15.13+dfsg-0ubuntu1.5) ...
+Setting up samba-dsdb-modules:amd64 (2:4.15.13+dfsg-0ubuntu1.5) ...
+Setting up python3-samba (2:4.15.13+dfsg-0ubuntu1.5) ...
+Setting up samba-common-bin (2:4.15.13+dfsg-0ubuntu1.5) ...
+Checking smb.conf with testparm
+Load smb config files from /etc/samba/smb.conf
+Loaded services file OK.
+Weak crypto is allowed
+
+Server role: ROLE_STANDALONE
+
+Done
+Processing triggers for libc-bin (2.35-0ubuntu3.4) ...
+```
+
+- Then install vim command by using:
+### Command 
 ```
 apt install vim
 ```
+**Output**
+```
+root@d830848b87d7:/opt/nagios/etc# apt install vim
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libgpm2 vim-common vim-runtime xxd
+Suggested packages:
+  gpm ctags vim-doc vim-scripts
+The following NEW packages will be installed:
+  libgpm2 vim vim-common vim-runtime xxd
+0 upgraded, 5 newly installed, 0 to remove and 0 not upgraded.
+Need to get 8720 kB of archives.
+After this operation, 38.3 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 xxd amd64 2:8.2.3995-1ubuntu2.13 [54.5 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 vim-common all 2:8.2.3995-1ubuntu2.13 [81.5 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy/main amd64 libgpm2 amd64 1.20.7-10build1 [15.3 kB]
+Get:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 vim-runtime all 2:8.2.3995-1ubuntu2.13 [6834 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 vim amd64 2:8.2.3995-1ubuntu2.13 [1734 kB]
+Fetched 8720 kB in 6s (1490 kB/s)
+```
 
-#### Command :-
+### Command :-
 This command is used  for editing in file.
 
 ```
@@ -444,7 +728,7 @@ After login you will get Nagios dashboard like this:
 
 ![Alt text](<Screenshot from 2023-09-08 11-34-20.png>) 
 
-#### Checking services
+### Checking services
 We have to go on left side and click on the service option.
 This is the dashboard of all services.</br>
 
