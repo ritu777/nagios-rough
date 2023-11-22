@@ -62,9 +62,11 @@ sudo snap install curl
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo snap install curl
 
 curl 8.1.2 from Wouter van Bommel (woutervb) installed
+```
 
 Then, use the command below to download and add the GPG key. This is needed to make sure the downloaded package is good.
 ### COMMAND 
+
 ```
 curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
 ```
@@ -82,14 +84,15 @@ ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ curl -L "https://download.opensuse.org/re
 
 OK
 ```
+After that update your system by this command.
 ### COMMAND 
 
-After that update your system by this command.
 ```
 sudo apt update
 ```
 **OUTPUT**
-```ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo apt update  </BR>
+```
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ sudo apt update  </BR>
 Hit:1 http://security.ubuntu.com/ubuntu focal-security InRelease   </BR>
 Hit:2 http://in.archive.ubuntu.com/ubuntu focal InRelease   </BR>   
 Get:3 https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04  InRelease [1,642 B] </BR>
@@ -225,45 +228,23 @@ Processing triggers for man-db (2.9.1-1) .. </BR>
 
 
 
-After installation of podman you can check by this command.
+ you can check version of podman by this command.
+### COMMAND 
 ```
 podman -v
 ```
+**OUTPUT**
 ```
-systemctl enable podman
+ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman -v
+podman version 3.4.2
 ```
-
-```
-systemctl status podman
-```
-**systemctl:**	It is a command-line tool for managing system services.
-
-**status:**	This is a subcommand of systemctl that displays the status of a system service.
-
-**podman:**	Name of the system service to check the status.
-
-ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman -v</BR>
-podman version 3.4.2</BR>
-ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ systemctl enable podman</BR>
-ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ systemctl status podman</BR>
-● podman.service - Podman API Service</BR>
-
-     Loaded: loaded (/lib/systemd/system/podman.service; enabled; vendor preset>
-     
-     Active: inactive (dead) since Tue 2023-11-21 10:32:51 IST; 2h 7min ago
-     
-TriggeredBy: ● podman.socket
-
-       Docs: man:podman-system-service(1)
-       
-   Main PID: 553 (code=exited, status=0/SUCCESS)
-
-
-#### Command :-
-
+After installation of podman search registry of nagios on docker hub.
 This command will query the default container registry (usually Docker Hub) and return a list of container images with "nagios" in their name or description.
+### COMMAND 
 ```
 podman search nagios
+```
+**OUTPUT**
 ```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman search nagios
 
@@ -278,6 +259,7 @@ docker.io         docker.io/jasonrivers/nagios                          Nagios C
 docker.io         docker.io/harisekhon/nagios-plugins                   Advanced Nagios Plugins Collection (400+ pro...         24                      [OK]
 
 docker.io         docker.io/ethnchao/nagios                              Nagios on Docker!                                       6                       [OK]
+```
 
 
 **podman:** It is the name of the containerization tool.</br>
@@ -286,12 +268,13 @@ docker.io         docker.io/ethnchao/nagios                              Nagios 
 
 **nagios:** It is search term or query, here I am  looking for container images related to the Nagios monitoring tool.</br>
 
-#### Command :-
 This comand is used to pull the nagios container image from docker hub to your local system using podman.
+### Command
 ```
 podman pull docker.io/jasonrivers/nagios  
 ```
 **OUTPUT**
+```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman pull docker.io/jasonrivers/nagios  </BR>
 Trying to pull docker.io/jasonrivers/nagios:latest...  </BR>
 Getting image source signatures  </BR>
@@ -330,7 +313,7 @@ Copying config 653834b48d done    </BR>
 Writing manifest to image destination </BR>
 Storing signatures </BR>
 653834b48d9f6c9b0b500cc3d45eabe988dae4f9bcb2e980d57f630760b53bd8
-
+```
 
 
 **podman pull:** It tells your computer to download something.</br>
@@ -341,17 +324,19 @@ Storing signatures </BR>
 
 
 
-#### Command :- 
+
 This command will start the Nagios container with the specified options. You can access the Nagios web interface by opening a web browser and navigating to http://localhost:8095/nagios.</br> 
 In this command I added my username and password also otherwise nagios will give you default username and password.
+### Command
 
 ```
  podman run -d --name nagios -p 8095:80 --cap-add=NET_RAW -e NAGIOSADMIN_USER=reetu -e NAGIOSADMIN_PASSWORD=nagios docker.io/jasonrivers/nagios
  ```
 **OUTPUT**
-
+```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$  podman run -d --name nagios -p 8095:80 --cap-add=NET_RAW -e NAGIOSADMIN_USER=reetu -e NAGIOSADMIN_PASSWORD=nagios docker.io/jasonrivers/nagios</BR>
 cff139cc3e129ec4d7518c8a2578275ac9c313eb76b6d66866bf3501d8ef4b1c
+```
 
 **podman run:** It tells your computer to start running something in a container.</br>
 
@@ -375,7 +360,7 @@ cff139cc3e129ec4d7518c8a2578275ac9c313eb76b6d66866bf3501d8ef4b1c
 podman ps
 ```
 **OUTPUT**
-
+```
 ritu@ritu-Standard-PC-Q35-ICH9-2009:~$ podman ps</br>
 CONTAINER ID         cff139cc3e12     </br> 
 IMAGE                 docker.io/jasonrivers/nagios:latest    </br>                     
@@ -383,14 +368,17 @@ COMMAND               /usr/local/bin/st.. </br>
 CREATED               2 minutes ago </br> 
 STATUS                Up 2 minutes ago </br> 
 PORTS                0.0.0.0:8095->80/tcp </br> 
-NAMES                 nagios  </br> 
+NAMES                 nagios  </br>
+```
+
 **podman:** This is the command-line tool for managing containers.</br>
 
 **ps:** This is a subcommand of podman that stands for "processes" or "list containers."</br>
 
 **If you have not given your username then u don't have need to follow below steps:**
-#### Command :-
+
 This command is used for going into the container and execute commands.
+### Command
 ```
 podman exec -it nagios bash
 ```
